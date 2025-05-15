@@ -4,18 +4,18 @@ async function fetchPrices() {
   tableBody.innerHTML = "<tr><td colspan='4'>Loading...</td></tr>";
 
   try {
-    const mexcRes = await fetch("https://contract.mexc.com/api/v1/contract/ticker");
-    const lbankRes = await fetch("https://fapi.lbank.site/v1/futures/ticker/24hr");
+    const mexcRes = await fetch("https://gen4ik-proxy.fly.dev/mexc");
+    const lbankRes = await fetch("https://gen4ik-proxy.fly.dev/lbank");
 
     const mexcData = await mexcRes.json();
     const lbankData = await lbankRes.json();
 
     const lbankMap = {};
-    lbankData.data.forEach(item => {
+    lbankData.forEach(item => {
       lbankMap[item.symbol.toUpperCase()] = parseFloat(item.lastPrice);
     });
 
-    const rows = mexcData.data.map(item => {
+    const rows = mexcData.map(item => {
       const symbol = item.symbol.toUpperCase();
       const mexcPrice = parseFloat(item.lastPrice);
       const lbankPrice = lbankMap[symbol];
