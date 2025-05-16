@@ -4,8 +4,8 @@ async function fetchPrices() {
   tableBody.innerHTML = "<tr><td colspan='4'>Loading...</td></tr>";
 
   try {
-    const mexcRes = await fetch("https://gen4ik-proxy.fly.dev/mexc");
-    const lbankRes = await fetch("https://gen4ik-proxy.fly.dev/lbank");
+    const mexcRes = await fetch("https://gen4ik-proxy-cors-1.fly.dev/mexc");
+    const lbankRes = await fetch("https://gen4ik-proxy-cors-1.fly.dev/lbank");
 
     const mexcData = await mexcRes.json();
     const lbankData = await lbankRes.json();
